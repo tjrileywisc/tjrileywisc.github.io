@@ -4,6 +4,21 @@
 <h1>Timothy Riley's project blog</h1>
 
 <p>
+June 3 2015
+
+This block of xml in my app's android manifest is preventing me from making calls when my app is installed. 
+I assume its intercepting all outgoing call requests via the intent. I'll need to comment it out while I work on other parts.
+
+            <receiver android:name="OutgoingCallHandler">
+                <intent-filter>
+                    <action android:name="android.intent.action.NEW_OUTGOING_CALL" />
+                    <category android:name="android.intent.category.DEFAULT" />
+                </intent-filter>
+            </receiver>
+			
+</p>
+
+<p>
 June 1 2015
 
 I'm planning on taking a candlestick phone and converting it to be used with an Android OS phone so that the candlestick
