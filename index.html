@@ -2,7 +2,6 @@
 <html>
 <body>
 <h1>Timothy Riley's project blog</h1>
-
 <p>
 June 3 2015
 
@@ -17,6 +16,15 @@ I assume its intercepting all outgoing call requests via the intent. I'll need t
             </receiver>
 			
 </p>
+
+<p>
+EDIT: found the problem was the NEW_OUTGOING_CALL part of the intent, removed that
+Found some very helpful code at http://www.mkyong.com/android/how-to-make-a-phone-call-in-android/ that allows me to call
+a specific phone number from the app, skipping the OS dialer (I won't need it for this project since I'll eventually be using
+the hardware rotary dial on the candlestick phone). Now the code is in my bluetooth loop so it won't allow the call 
+until it finds a device called 'Candlestick' among visible paired bluetooth devices.
+</p>
+
 
 <p>
 June 1 2015
