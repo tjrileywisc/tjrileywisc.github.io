@@ -2,23 +2,44 @@
 <html>
 <body>
 <h1>Timothy Riley's project blog</h1>
+
+<p>
+June 6 2015
+
+An apparent setback...
+
+I had intended to implement an android OS service to run in the background and listen for any phone call coming to a phone paired with the
+candlestick phone. An implicit intent would then have to be passed to the service to broadcast the change in phone state, but according to what I see
+on Google's developer pages this will result in an exception (since it's not possible to specify which background service should take an intent). I 
+guess I can see why this is the case. I suppose that having the candlestick handler application show up as an option to take the call intent (if
+indeed this is possible) to pass to the candlestick via bluetooth would not be the most onerous requirement to ever be put on the end user
+(it would just be one extra button after all...)
+
+The bonus being that I don't have to worry about learning how services work, on top of learning how to program in java and manage
+android app development already. Maybe another project.
+</p>
+
 <p>
 June 3 2015
 
 This block of xml in my app's android manifest is preventing me from making calls when my app is installed. 
 I assume its intercepting all outgoing call requests via the intent. I'll need to comment it out while I work on other parts.
 
-            <receiver android:name="OutgoingCallHandler">
-                <intent-filter>
-                    <action android:name="android.intent.action.NEW_OUTGOING_CALL" />
-                    <category android:name="android.intent.category.DEFAULT" />
-                </intent-filter>
-            </receiver>
+<pre>
+            &lt;receiver android:name="OutgoingCallHandler"&gt;
+                &lt;intent-filter&gt;
+                    &lt;action android:name="android.intent.action.NEW_OUTGOING_CALL" &gt;
+                    &lt;category android:name="android.intent.category.DEFAULT" &gt;
+                &lt;intent-filter&gt;
+            &lt;receiver&gt;
 			
-</p>
+</pre>
 
 <p>
-EDIT: found the problem was the NEW_OUTGOING_CALL part of the intent, removed that
+EDIT: found the problem was the NEW_OUTGOING_CALL part of the intent, removed that. It's obvious to me know what was happening;
+whenever I had the app on the device it would listen for an attempt to make an outgoing call and take over.
+</p>
+
 Found some very helpful code at http://www.mkyong.com/android/how-to-make-a-phone-call-in-android/ that allows me to call
 a specific phone number from the app, skipping the OS dialer (I won't need it for this project since I'll eventually be using
 the hardware rotary dial on the candlestick phone). Now the code is in my bluetooth loop so it won't allow the call 
