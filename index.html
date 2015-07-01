@@ -4,18 +4,32 @@
 <h1>Timothy Riley's project blog</h1>
 
 <p>
-June 28 2015
+June 30 2015</br>
+
+Got some time to work on the app this evening. Moved the notification code out of the onCreate method of the main activity and into the
+background service instead (it feels more correct there). The service appears to be starting correctly but I am now trying to change the
+notification text so that it changes when a call comes in (I think that was working at one point) and also the behavior will be different
+when you tap on it, depending on whether or not a call is actually coming in at the moment.</br>
+
+Also have started to get a Docker container running Ubuntu and Torch so that I can play with char-rnn (https://github.com/karpathy/char-rnn).
+It's working as expected according to that page. I'm training a dictionary now that I found on Project Gutenberg to see how that will behave. 
+It would be interesting to see if any of the suggested definitions make any kind of sense.
+</p>
+
+
+<p>
+June 28 2015</br>
 
 I was finally able to make some small progress on the app after distractions of machine learning and moving the past couple of weeks.</br>
 
 Now the app has a running service and has a notification that changes when an incoming phone call is received. Still need to do some updates to
 watch the actual current call state and update the notification. When a call comes in, it should allow the user to start a specific activity that
 just has two big buttons; take the call on the phone you are holding, or send it to the phone. That activity launches, but I'll need to send
-somethine via bluetooth when the second button is pressed to pass the call.
+something via bluetooth when the second button is pressed to pass the call.
 </p>
 
 <p>
-June 6 2015
+June 6 2015</br>
 
 An apparent setback...
 
@@ -31,7 +45,7 @@ android app development already. Maybe another project.
 </p>
 
 <p>
-June 3 2015
+June 3 2015</br>
 
 This block of xml in my app's android manifest is preventing me from making calls when my app is installed. 
 I assume its intercepting all outgoing call requests via the intent. I'll need to comment it out while I work on other parts.
@@ -59,7 +73,7 @@ until it finds a device called 'Candlestick' among visible paired bluetooth devi
 
 
 <p>
-June 1 2015
+June 1 2015</br>
 
 I'm planning on taking a candlestick phone and converting it to be used with an Android OS phone so that the candlestick
 phone can both receive and send calls via bluetooth. I've seen other projects but it looks like they just shoved a 
