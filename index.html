@@ -1,108 +1,122 @@
 <!DOCTYPE html>
 <html>
-<body>
-<h1>Timothy Riley's project blog</h1>
+    <link href='http://fonts.googleapis.com/css?family=Bitter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <!--
+    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.blue_grey-blue.min.css" /> 
+    <script src="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" type="text/css">
+    -->
+    <body>
+        <div class="container">
+        <div class="row text-center">
+            <h1>Timothy Riley's project blog</h1>
+        </div>
 
-<p>
-June 30 2015</br>
+        <h5>June 30 2015</h5>
+        </br>
+        <div class="blog_entry">
+        Got some time to work on the app this evening. Moved the notification code out of the onCreate method of the main activity and into the
+        background service instead (it feels more correct there). The service appears to be starting correctly but I am now trying to change the
+        notification text so that it changes when a call comes in (I think that was working at one point) and also the behavior will be different
+        when you tap on it, depending on whether or not a call is actually coming in at the moment.</br>
 
-Got some time to work on the app this evening. Moved the notification code out of the onCreate method of the main activity and into the
-background service instead (it feels more correct there). The service appears to be starting correctly but I am now trying to change the
-notification text so that it changes when a call comes in (I think that was working at one point) and also the behavior will be different
-when you tap on it, depending on whether or not a call is actually coming in at the moment.</br>
-
-Also have started to get a Docker container running Ubuntu and Torch so that I can play with char-rnn (https://github.com/karpathy/char-rnn).
-It's working as expected according to that page. I'm training a dictionary now that I found on Project Gutenberg to see how that will behave. 
-It would be interesting to see if any of the suggested definitions make any kind of sense.
-</p>
-
-
-<p>
-June 28 2015</br>
-
-I was finally able to make some small progress on the app after distractions of machine learning and moving the past couple of weeks.</br>
-
-Now the app has a running service and has a notification that changes when an incoming phone call is received. Still need to do some updates to
-watch the actual current call state and update the notification. When a call comes in, it should allow the user to start a specific activity that
-just has two big buttons; take the call on the phone you are holding, or send it to the phone. That activity launches, but I'll need to send
-something via bluetooth when the second button is pressed to pass the call.
-</p>
-
-<p>
-June 6 2015</br>
-
-An apparent setback...
-
-I had intended to implement an android OS service to run in the background and listen for any phone call coming to a phone paired with the
-candlestick phone. An implicit intent would then have to be passed to the service to broadcast the change in phone state, but according to what I see
-on Google's developer pages this will result in an exception (since it's not possible to specify which background service should take an intent). I 
-guess I can see why this is the case. I suppose that having the candlestick handler application show up as an option to take the call intent (if
-indeed this is possible) to pass to the candlestick via bluetooth would not be the most onerous requirement to ever be put on the end user
-(it would just be one extra button after all...)
-
-The bonus being that I don't have to worry about learning how services work, on top of learning how to program in java and manage
-android app development already. Maybe another project.
-</p>
-
-<p>
-June 3 2015</br>
-
-This block of xml in my app's android manifest is preventing me from making calls when my app is installed. 
-I assume its intercepting all outgoing call requests via the intent. I'll need to comment it out while I work on other parts.
-
-<pre>
-            &lt;receiver android:name="OutgoingCallHandler"&gt;
-                &lt;intent-filter&gt;
-                    &lt;action android:name="android.intent.action.NEW_OUTGOING_CALL" &gt;
-                    &lt;category android:name="android.intent.category.DEFAULT" &gt;
-                &lt;intent-filter&gt;
-            &lt;receiver&gt;
-			
-</pre>
-
-<p>
-EDIT: found the problem was the NEW_OUTGOING_CALL part of the intent, removed that. It's obvious to me know what was happening;
-whenever I had the app on the device it would listen for an attempt to make an outgoing call and take over.
-</p>
-
-Found some very helpful code at http://www.mkyong.com/android/how-to-make-a-phone-call-in-android/ that allows me to call
-a specific phone number from the app, skipping the OS dialer (I won't need it for this project since I'll eventually be using
-the hardware rotary dial on the candlestick phone). Now the code is in my bluetooth loop so it won't allow the call 
-until it finds a device called 'Candlestick' among visible paired bluetooth devices.
-</p>
+        Also have started to get a Docker container running Ubuntu and Torch so that I can play with <a href = https://github.com/karpathy/char-rnn>char-rnn</a>
+        It's working as expected according to that page. I'm training a dictionary now that I found on Project Gutenberg to see how that will behave. 
+        It would be interesting to see if any of the suggested definitions make any kind of sense.
+        </div>
 
 
-<p>
-June 1 2015</br>
+        <p>
+        <h5> June 28 2015</h5>
 
-I'm planning on taking a candlestick phone and converting it to be used with an Android OS phone so that the candlestick
-phone can both receive and send calls via bluetooth. I've seen other projects but it looks like they just shoved a 
-cellphone into the other device, which isn't very elegant in my opinion.
+        <div class="blog_entry">
+        I was finally able to make some small progress on the app after distractions of machine learning and moving the past couple of weeks.</br>
 
-This project touches a lot of areas that I'm not familiar with:
-- Bluetooth (used for connections)
-- Java (Android app will be programmed in Java)
-- Telephony (not a huge personal interest of mine, just needed for this project)
-- Project blogging in general (in the hopes that it will keep me on task)
-- Git and GitHub (I need more practice with source control)
-- Hardware projects
-- 3D printing (this should be minor hopefully as there's only one part that needs to be replaced)
-- Speakers/microphones
-</p>
+        Now the app has a running service and has a notification that changes when an incoming phone call is received. Still need to do some updates to
+        watch the actual current call state and update the notification. When a call comes in, it should allow the user to start a specific activity that
+        just has two big buttons; take the call on the phone you are holding, or send it to the phone. That activity launches, but I'll need to send
+        something via bluetooth when the second button is pressed to pass the call.
+        </div>
 
-<p>
-I expect the project to proceed in phases:
-1) Simple message transferred from phone to other device via bluetooth
-2) Implementation of a Android OS service to monitor incoming calls, with broadcast of this information to device as above
-3) Allow this external device to send data via bluetooth to app
-4) Data sent from device should be able to trigger a phone call on the Android device
-(this is the real meat of the project)
-5) Phone audio transferred to device
-6) Device should be able to send voice data to phone (and quickly) so that receiver can hear
-(hardware phase)
-7) Put the device into the candlestick body and make sure it can be independent
-</p>
+        <p>
+        June 6 2015</br>
 
-<p>I'm hosted with GitHub Pages.</p>
-</body>
+        An apparent setback...
+
+        I had intended to implement an android OS service to run in the background and listen for any phone call coming to a phone paired with the
+        candlestick phone. An implicit intent would then have to be passed to the service to broadcast the change in phone state, but according to what I see
+        on Google's developer pages this will result in an exception (since it's not possible to specify which background service should take an intent). I 
+        guess I can see why this is the case. I suppose that having the candlestick handler application show up as an option to take the call intent (if
+        indeed this is possible) to pass to the candlestick via bluetooth would not be the most onerous requirement to ever be put on the end user
+        (it would just be one extra button after all...)
+
+        The bonus being that I don't have to worry about learning how services work, on top of learning how to program in java and manage
+        android app development already. Maybe another project.
+        </p>
+
+        <p>
+        June 3 2015</br>
+
+        This block of xml in my app's android manifest is preventing me from making calls when my app is installed. 
+        I assume its intercepting all outgoing call requests via the intent. I'll need to comment it out while I work on other parts.
+
+        <pre>
+                    &lt;receiver android:name="OutgoingCallHandler"&gt;
+                        &lt;intent-filter&gt;
+                            &lt;action android:name="android.intent.action.NEW_OUTGOING_CALL" &gt;
+                            &lt;category android:name="android.intent.category.DEFAULT" &gt;
+                        &lt;intent-filter&gt;
+                    &lt;receiver&gt;
+                    
+        </pre>
+
+        <p>
+        EDIT: found the problem was the NEW_OUTGOING_CALL part of the intent, removed that. It's obvious to me know what was happening;
+        whenever I had the app on the device it would listen for an attempt to make an outgoing call and take over.
+        </p>
+
+        Found some very helpful code at http://www.mkyong.com/android/how-to-make-a-phone-call-in-android/ that allows me to call
+        a specific phone number from the app, skipping the OS dialer (I won't need it for this project since I'll eventually be using
+        the hardware rotary dial on the candlestick phone). Now the code is in my bluetooth loop so it won't allow the call 
+        until it finds a device called 'Candlestick' among visible paired bluetooth devices.
+        </p>
+
+
+        <p>
+        June 1 2015</br>
+
+        I'm planning on taking a candlestick phone and converting it to be used with an Android OS phone so that the candlestick
+        phone can both receive and send calls via bluetooth. I've seen other projects but it looks like they just shoved a 
+        cellphone into the other device, which isn't very elegant in my opinion.
+
+        This project touches a lot of areas that I'm not familiar with:
+        - Bluetooth (used for connections)
+        - Java (Android app will be programmed in Java)
+        - Telephony (not a huge personal interest of mine, just needed for this project)
+        - Project blogging in general (in the hopes that it will keep me on task)
+        - Git and GitHub (I need more practice with source control)
+        - Hardware projects
+        - 3D printing (this should be minor hopefully as there's only one part that needs to be replaced)
+        - Speakers/microphones
+        </p>
+
+        <p>
+        I expect the project to proceed in phases:
+        1) Simple message transferred from phone to other device via bluetooth
+        2) Implementation of a Android OS service to monitor incoming calls, with broadcast of this information to device as above
+        3) Allow this external device to send data via bluetooth to app
+        4) Data sent from device should be able to trigger a phone call on the Android device
+        (this is the real meat of the project)
+        5) Phone audio transferred to device
+        6) Device should be able to send voice data to phone (and quickly) so that receiver can hear
+        (hardware phase)
+        7) Put the device into the candlestick body and make sure it can be independent
+        </p>
+
+        <p>I'm hosted with GitHub Pages.</p>
+            </div>
+    </body>
 </html>
