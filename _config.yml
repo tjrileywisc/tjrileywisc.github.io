@@ -1,0 +1,15 @@
+# Site settings
+title: Timothy Riley's project blog
+subtitle: A mechanical engineer and more
+email:
+description: "description goes here"
+baseurl: ""
+url: "http://tjrileywisc.github.io"
+twitter_username: tjrileywisc
+github_username: tjrileywisc
+linkedin_username: timothyjohnriley
+encoding: utf-8
+
+# Build settings
+markdown: redcarpet
+permalink: pretty

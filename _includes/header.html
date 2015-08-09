@@ -1,0 +1,32 @@
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<header class="site-header">
+    <div class="wrap">
+        <a class="site-title" href="{{ site.baseurl }}/">
+            {{ site.title }}
+        </a>
+        <nav class="site-nav">
+          <div class="trigger">
+            {% for page in site.pages %}
+                {% if page.title %}
+                    <a class="page-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
+                {% endif %}
+            {% endfor %}
+          </div>
+        </nav>
+    </div>
+    <body>
+        <div>
+            <div>
+                <a href="#about" class="mdl-layout__tab">About</a>
+                <a href="#cv" class="mdl-layout__tab">CV</a>
+                <a href="projects" class="mdl-layout__tab">Projects</a>
+                <a href="#likes" class="mdl-layout__tab">Likes</a>
+            </div>
+        </div>
+    </body>
+</header>

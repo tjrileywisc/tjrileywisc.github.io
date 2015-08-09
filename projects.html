@@ -1,0 +1,17 @@
+---
+layout: default
+---
+<div class="home">
+    <!-- list o' projects -->
+    <ul class="project">
+    {% for proj in site.projects %}
+      <li>
+        <span class="proj-date">{{ proj.date | date: "%b %-d, %Y" }}</span>
+        <a class="proj-link" href="{{ proj.url | prepend: site.baseurl }}">{{ proj.title }}</a>
+        <br>
+        {{ proj.excerpt }}
+      </li>
+    {% endfor %}
+    </ul>
+
+</div>
