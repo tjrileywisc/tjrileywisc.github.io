@@ -6,10 +6,7 @@ order: 2
 
 ## Selected Projects
 
-### Project Name
-**Tools:** SolidWorks, MATLAB  
-Short description of what you built and why it matters.
-
-### Another Project
-**Tools:** Python, FEA  
-What problem you solved and how.
+### Speaker diarization and transcription of Waltham City Council meetings
+**Tools:** python, pytorch, OpenAI Whisper, pyannote  
+Enhance government transparency by keeping track of who said what, when. No more looking through old videos without
+subtitles in an attempt to get an idea of what your city councillor really thinks.
